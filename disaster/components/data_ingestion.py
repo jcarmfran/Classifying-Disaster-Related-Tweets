@@ -42,7 +42,7 @@ class DataIngestion:
 
             logging.info("Exited the unzip_and_clean method of DataIngestion class")
 
-            return self.data_ingestion_config.DATA_ARTIFACTS_DIR, self.data_ingestion_config.NEW_DATA_ARTIFACTS_DIR
+            return self.data_ingestion_config.DATA_ARTIFACTS_DIR
 
         except Exception as e:
             raise CustomException(e, sys) from e
@@ -62,12 +62,11 @@ class DataIngestion:
 
             logging.info("Fetched the data from Google cloud bucket")
 
-            test_data_file_path, train_data_file_path = self.unzip_and_clean()
+            data_file_path = self.unzip_and_clean()
 
             logging.info("Unzipped file and split into train and valid")
 
-            data_ingestion_artifacts = DataIngestionArtifacts(train_data_file_path=train_data_file_path,
-                                                              test_data_file_path=test_data_file_path)
+            data_ingestion_artifacts = DataIngestionArtifacts(data_file_path=data_file_path)
 
             logging.info("Exited the initiate_data_ingestion method of DataIngestion class")
 
