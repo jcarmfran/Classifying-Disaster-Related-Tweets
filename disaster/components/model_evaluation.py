@@ -73,7 +73,7 @@ class ModelEvaluation:
 
             load_model=keras.models.load_model(self.model_trainer_artifacts.trained_model_path)
 
-            x_test = x_test['tweet'].astype(str)
+            x_test = x_test['text'].astype(str)
 
             x_test = x_test.squeeze()
             y_test = y_test.squeeze()
