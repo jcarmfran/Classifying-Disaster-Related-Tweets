@@ -56,3 +56,12 @@ class ModelEvaluationConfig:
         self.BEST_MODEL_DIR_PATH: str = os.path.join(self.MODEL_EVALUATION_MODEL_DIR,BEST_MODEL_DIR)
         self.BUCKET_NAME = BUCKET_NAME 
         self.MODEL_NAME = MODEL_NAME
+        
+
+@dataclass
+class ModelPusherConfig:
+
+    def __init__(self):
+        self.TRAINED_MODEL_PATH = os.path.join(os.getcwd(),ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR)
+        self.BUCKET_NAME = BUCKET_NAME
+        self.MODEL_NAME = MODEL_NAME
