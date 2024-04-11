@@ -49,13 +49,16 @@ class ModelTrainer:
 
 
     def tokenizing(self,x_train):
+
         try:
             logging.info("Applying tokenization on the data")
             
             tokenizer = Tokenizer(num_words=self.model_trainer_config.MAX_WORDS)
+            logging.info("post-tokenization")
+            
+            logging.info("starting tokenizer.fit_on_texts")
             tokenizer.fit_on_texts(x_train)
             sequences = tokenizer.texts_to_sequences(x_train)
-            
             logging.info(f"converting text to sequences: {sequences}")
             
             sequences_matrix = pad_sequences(sequences,maxlen=self.model_trainer_config.MAX_LEN)
